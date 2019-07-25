@@ -1,0 +1,38 @@
+v-cloak 可以解决插值表达式闪烁的问题（即 vue.js 未完全加载时，插值表达式还未生效）
+默认 v-text 没有闪烁问题（里面没有插值表达式），但会把元素内的东西完全覆盖
+v-html 会把内容解析为h5表达式
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <p v-cloak>{{ msg }}</p>//////////////////
+        <h4 v-text="msg"></h4>//////////////////
+        <div v-html="msg2"></div>//////////////////
+    </div>
+
+    <script src="/js/vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '123',
+                msg2: '<h1>我是H1</h1>'
+            }
+        })
+    </script>
+</body>
+</html>
