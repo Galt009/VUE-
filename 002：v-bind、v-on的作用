@@ -1,0 +1,30 @@
+v-bind 的作用：属性绑定
+可简写为：
+     :title=" mytitle + '123' "
+     
+v-on 的作用：事件绑定
+可简写为：
+     @click="show"
+     
+///////////////////////////////////////////////////////////////////////////
+    <div id="app">
+        <input type="button" value="按钮" v-bind:title=" mytitle + '123' ">
+        <input type="button" value="按钮" v-on:click="show">
+    </div>
+
+    <script src="/js/vue.js"></script>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                mytitle: '这是自定义'
+            },
+            methods:{
+                show: function(){
+                    alert('love')
+                }
+            }
+        })
+        })
+    </script>
