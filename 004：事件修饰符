@@ -18,13 +18,17 @@
 <body>
     <div id="app">
 
-        <a href="http://www.baidu.com" @click.prevent="linkclick">baidu</a>
+        <a href="http://www.baidu.com" @click.prevent.once="linkclick">baidu</a>    //阻止默认行为一次
 
         <!-- <div class="inner" @click="divHandler">
-            <input type="button" value="点他" @click.stop="btnHandler">//阻止事件冒泡
+            <input type="button" value="点他" @click.stop="btnHandler">             //阻止事件冒泡
         </div> -->
 
-        <div class="inner" @click.capture="divHandler">//由外到内捕获
+        <div class="inner" @click.capture="divHandler">                            //由外到内捕获
+            <input type="button" value="点他" @click="btnHandler">
+        </div>
+        
+         <div class="inner" @click.self="divHandler">/                             //点击自身才触发（只阻止自己身上的冒泡行为，不管其他的）
             <input type="button" value="点他" @click="btnHandler">
         </div>
     </div>
