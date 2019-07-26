@@ -1,5 +1,4 @@
 
-///////////////////////////////////////////////////////////////////////////////////////////////
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,18 +19,23 @@
         new Vue({
             el: '#app',
             data: {
-                msg: '猥琐发育，别浪~~！'
+                msg: '猥琐发育，别浪~~！',
+                intervalId: null
             },
             methods: {
                 lang(){
-                    setInterval( () => {      /////////箭头函数里的 this 指向外部的this
+
+                    if(this.intervalId != null)return;
+
+                    this.intervalId = setInterval( () => {        /////////箭头函数里的 this 指向外部的this
                         var start = this.msg.substring(0,1)
                         var end = this.msg.substring(1)
                         this.msg = end + start
                     }, 400)
                 },
                 didiao(){
-                    
+                    clearInterval(this.intervalId)
+                    this.intervalId = null
                 }
             }
         })
