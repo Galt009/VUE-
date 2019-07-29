@@ -60,8 +60,8 @@
         var vm=new Vue({
            el:'#app',
            data:{
-               id: '',
-               name: '',
+               id: '',                                     //数据双向绑定时要声明
+               name: '',                                   //数据双向绑定时要声明
                list: [
                    { id: 1, name: 'qq', ctime: new Date() },
                    { id: 2, name: 'aa', ctime: new Date() },
@@ -71,6 +71,7 @@
                add() {
                     var car = { id: this.id, name: this.name, ctime: new Date() }
                     this.list.push(car)
+                    this.id = this.name = ''   //添加完后清空输入框
                }
            }
         });
