@@ -118,3 +118,40 @@
 </body>
 
 </html>
+
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+过滤器
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ msg | msgFormat('xsxsxs') }}</p>
+    </div>
+    <script>
+
+        Vue.filter('msgFormat', function (msg,arg) {
+            return msg.replace(/a/g,arg)//正则表达式全局匹配
+        })
+
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               msg: 'ddddddaaaaaaaarrrrrreeeeeeeeeee'
+           },
+           methods:{}
+        });
+    </script>
+</body>
+
+</html>
