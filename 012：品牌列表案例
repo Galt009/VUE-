@@ -30,6 +30,10 @@
                    
                     <input type="button" class="btn btn-primary" value="添加" @click="add">
                     
+                    <label for="">
+                        搜索名称关键字：
+                        <input type="text" class="form-control" v-model="keywords">
+                    </label>
               </div>
         </div>
         
@@ -44,7 +48,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in list" :key="item.id">
+                <tr v-for="item in search(keywords)" :key="item.id">
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.ctime }}</td>
@@ -62,6 +66,7 @@
            data:{
                id: '',//数据双向绑定时要声明
                name: '',//数据双向绑定时要声明
+               keywords: '',//数据双向绑定时要声明
                list: [
                    { id: 1, name: 'qq', ctime: new Date() },
                    { id: 2, name: 'aa', ctime: new Date() },
@@ -89,6 +94,22 @@
                         }
                     })
                     this.list.splice(index,1)
+               },
+               search(keywords) {
+                //    var newList = []
+                //    this.list.forEach(item => {
+                //        if (item.name.indexOf(keywords) != -1) {
+                //            //没有找到值时返回-1(注意forEach 和 indexOf 的大小写)
+                //            newList.push(item)
+                //        }
+                //    })
+                //    return newList
+
+                    return this.list.filter(item => {//过滤器
+                        if (item.name.includes(keywords)) {
+                            return item
+                        }
+                    })
 
                }
            }
