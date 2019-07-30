@@ -5,7 +5,7 @@ Vue.directive('color',{
 
      // 使用钩子函数的第二个 binding 参数拿到传递的值
      bind: function (el, binding) {
-         el.syle.color = binding.value
+         el.style.color = binding.value
      }
             
 })
