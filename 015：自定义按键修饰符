@@ -1,0 +1,6 @@
+<script>
+
+        //自定义全局按键修饰符（名称 = 键盘码）
+        Vue.config.keyCodes.f2 = 123
+        
+</script>
