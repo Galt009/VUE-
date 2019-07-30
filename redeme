@@ -1,0 +1,18 @@
+server这个文件夹中执行cnpm i
+
+server文件夹中
+命令行输入
+node vueserver.js
+/////////////////////////////  无以上则无视  //////////////////////////////////
+
+
+frontEnd文件夹里输入：
+ 
+cnpm i
+npm run dev
+
+
+
+使用localhost或者本机ip访问
+例如：http://localhost
+vueserver.js在服务器的server里
