@@ -13,6 +13,6 @@ npm run dev
 
 
 
-使用localhost或者本机ip访问
+使用localhost或者本机ip访问（查看ip的方法：cmd  ipconfig）
 例如：http://localhost
 vueserver.js在服务器的server里
