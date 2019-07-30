@@ -1,0 +1,12 @@
+<input type="text" class="form-control" v-model="keywords" id="search" v-focus v-color = "'blue'">
+
+<script>
+Vue.directive('color',{
+
+     // 使用钩子函数的第二个 binding 参数拿到传递的值
+     bind: function (el, binding) {
+         el.syle.color = binding.value
+     }
+            
+})
+</script>
