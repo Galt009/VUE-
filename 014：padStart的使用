@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ item | dateFormat('yyyy-mm-dd') }}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+                item: new Date()
+           },
+           methods:{
+
+           },
+           filters: {//定义私有过滤器  过滤器名称：处理函数
+            //过滤器调用的时候，采用的是就近原则，如果私有过滤器和全局过滤器名称一致了，这时候 优先调用私有过滤器
+               dateFormat: function (dateStr,pattern = ''){
+                    var dt = new Date(dateStr)
+                    var y = dt.getFullYear()
+                    //将获取的月份转换成字符串再补全成2位，不足2位时前面加'0'
+                    var m = (dt.getMonth() + 1).toString().padStart(2,'0')
+                    var d = dt.getDate().toString().padStart(2,'0')
+                    if(pattern.toLowerCase() === 'yyyy-mm-dd') {
+                        return `${y}-${m}-${d}`//注意：这个 ` 符号不是分号，是 esc键下的那个
+                    }else{
+                        var hh = dt.getHours().toString().padStart(2,'0')
+                        var mm = dt.getMinutes().toString().padStart(2,'0')
+                        var ss = dt.getSeconds().toString().padStart(2,'0')
+
+                        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+                    }
+               }
+           }
+        });
+    </script>
+</body>
+
+</html>
