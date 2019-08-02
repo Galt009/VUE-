@@ -110,4 +110,37 @@
 。。                    使用第三方类实现动画                    。。
 。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="/css/animate.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="toogle" @click="flag = !flag">
+        <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut" :duration="{ enter: 200, leave: 400 }">
+            <!-- 使用 :duration 来分别设置 入场时长 和 离场时长 -->
+            <h3 v-if="flag">这是一个h3</h3>
+        </transition>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data: {
+                flag: false
+            },
+            methods: {}
+        });
+    </script>
+</body>
+    
+    
+
+</html>
