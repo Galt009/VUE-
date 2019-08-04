@@ -276,14 +276,16 @@
             <input type="button" @click="add" value="添加">
             
         </div>
-        <ul>
+        <!-- <ul> -->
             <!-- 在实现列表过渡的时候，如果需要过渡的元素，是通过 v-for 循环渲染出来的，不能使用 transition 包裹，需要使用 transitionGroup -->
-            <transition-group tag="" name="">
+            <!-- 给 transition 添加 appear 属性，实现页面刚展示出来，入场时候的效果 -->
+            <!-- 通过为 transition-group 元素，设置 tag 属性，指定 transition-group 渲染为指定的元素，如果不指定 tag 属性，默认渲染为 span 标签 -->
+            <transition-group appear tag="ul">
                 <li v-for="(item, i) in list" :key="item.id" @click="del(i)">
                     {{ item.id }}--{{ item.name }}
                 </li>
             </transition-group>
-        </ul>
+        <!-- </ul> -->
     </div>
     <script>
         var vm=new Vue({
