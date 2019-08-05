@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my></my>
+    </div>
+    <template id="tmp1">
+        <h1>oo0| {{ msg }} |0oo</h1>
+    </template>
+    <script>
+        //1.组件可以有自己的 data 数据
+        //2.组件的 data 和实例的 data 有点不一样，实例中的 data 可以作为一个对象，但是 组件中的 data 必须是一个方法
+        //3.组件中的 data 除了必须为一个方法之外，这个方法内部，还必须返回一个对象才行
+        Vue.component('my',{
+            template: '#tmp1',
+            data: function () {
+                return {
+                    msg: 'I Love You'
+                }
+            }
+        })
+        var vm=new Vue({
+           el:'#app',
+           data: {},
+           methods: {}
+        });
+    </script>
+</body>
+
+</html>
