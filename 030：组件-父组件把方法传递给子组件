@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com v-on:func="show"></com>
+        <!-- 如果是 show(),则是绑定的事件结果 -->
+    </div>
+
+    <template id="tmp">
+        <div>
+            <h1>子组件</h1>
+            <input type="button" value="按钮" @click="myclick">
+        </div>
+    </template>
+
+    <script>
+        //定义了一个字面量型的组件模板对象
+        var com = {
+            template: '#tmp',
+            data: function () {
+                return {
+                    songmsg: { name: 'Galt', age: 23 }
+                }
+            },
+            methods: {
+                myclick () {
+                    // emit 英文原意： 触发，调用，发射
+                    this.$emit('func', this.songmsg)
+                }
+            }
+        }
+        var vm=new Vue({
+           el:'#app',
+           data: {
+               datamsgFromSon: null
+           },
+           methods: {
+               show (data1) {
+                   console.log(data1)
+                   this.datamsgFromSon = data1
+               }
+           },
+           components: {
+               com
+               // com: com
+           }
+        });
+    </script>
+</body>
+
+</html>
