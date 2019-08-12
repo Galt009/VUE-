@@ -9,6 +9,16 @@
     <script src="js/vue.js"></script>
     <!-- 1. 安装 vue-router 路由模块 -->
     <script src="js/vue-router.js"></script>
+    <style>
+        .router-link-active, .myactive {
+            color: red;
+            font-weight: 800;
+            font-style: italic;
+            font-size: 80px;
+            text-decoration: underline;
+            background-color: green;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,8 +57,9 @@
                 { path: '/',  redirect: '/login' },
                 { path: '/login', component: login },
                 { path: '/register', component: register }
-
-            ]
+            ],
+            //配置自己的激活类名
+            linkActiveClass: 'myactive'
         })
 
         var vm=new Vue({
