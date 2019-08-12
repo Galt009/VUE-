@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" @click="getElement" value="获取元素" ref="mybtn">
+        <h3 id="myh3" ref="my">1234567890</h3>
+
+        <!-- 引用组件 -->
+        <login ref="mylogin"></login>
+    </div>
+    <script>
+
+        var login = {
+            template: '<h1>abc</h1>',
+
+            // data () {
+            //     return {
+
+            //     }
+            // },
+            data: function () {
+                return {
+                    msg: 'son msg'
+                }
+            },
+            methods: {
+                show () {
+                    console.log('调用了子组件的方法')
+                }
+            }
+        }
+
+        var vm=new Vue({
+           el:'#app',
+           data: {},
+           methods: {
+               getElement () {
+                //原生 JS 操作 DOM
+                //  console.log(document.getElementById('myh3').innerHTML)
+
+                //ref 是英文单词 reference （引用）的意思
+                console.log(this.$refs.my.innerText)
+                this.$refs.mylogin.show ()
+               }
+           },
+           components: {
+               login
+           }
+        });
+    </script>
+</body>
+
+</html>
